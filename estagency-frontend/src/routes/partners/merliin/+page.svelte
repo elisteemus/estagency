@@ -3,6 +3,7 @@
     import jeep from '$lib/images/Jeep_logo.png';
     import telia from '$lib/images/Telia_logo.png';
     import tere from '$lib/images/Tere_logo.png';
+
 </script>
 
 <div class="flex px-36 pt-10">
@@ -10,7 +11,7 @@
     <div class="block mt-32 ml-20">
     <h1 class="text-4xl font-bold tracking-wide">Merliin - <div class="text-estpurple">Video Production</div></h1>
     <br>
-    <p class="w-10/12 text-lg">“Marketing is no longer about the stuff that you make, but about the stories that you tell.”</p>
+    <p class="w-10/12 text-lg">test</p>
     </div>
 </div>
 

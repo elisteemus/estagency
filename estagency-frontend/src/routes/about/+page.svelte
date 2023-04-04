@@ -1,9 +1,28 @@
 
 <script>
-   import puzzle from '$lib/images/puzzlet.png';
-   import Merliin from '$lib/images/Merliin.png';
-   import Andres from '$lib/images/Andres.png';
-   
+    import { onMount } from "svelte";
+    
+    import { database } from '../../firebase.js';
+    import { ref, get } from "firebase/database";
+
+    import puzzle from '$lib/images/puzzlet.png';
+    import Merliin from '$lib/images/Merliin.png';
+    import Andres from '$lib/images/Andres.png';
+    import Partner from '$lib/components/Partner.svelte';
+
+    let partners = [];
+
+    onMount(async () => {
+        try {
+            let response = (await get(ref(database), 'Partner')).val().Partner;
+            console.log(response);
+            partners = Object.values(response);
+            partners.forEach(p => console.log(p));
+            console.log(partners);
+        } catch (error) {
+            console.error("Failed to fetch partners:", error);
+        }
+    });
 </script>
 
 <div>
@@ -37,16 +56,11 @@
 <br><br>
 
 <div class="grid grid-cols-3 gap-4 px-36 2xl:px-80">
-    <div class="flex border border-stone-200 rounded-xl">
-        <div class="py-6 px-6 2xl:pl-14">
-            <img src={Andres} alt="..." class="shadow rounded-full max-w-full h-28 align-middle border-none" />
-        </div>
-        <div class="block">
-            <div><h5 class="font-medium pt-8 text-slate-600">Andres</h5></div>
-            <div><h5 class="font-medium pt-1 text-slate-800 text-lg leading-5">Marketing,<br>B2B & PR</h5></div>
-            <div class="pt-2"><a href="partners/andres" class="text-xs text-slate-600 tracking-wider font-medium">SEE MORE  --></a></div>
-        </div>
-    </div>
+    {#each partners as partner}
+
+        <Partner {...partner}/>
+
+    {/each}
     <div class=" flex border border-stone-200 rounded-xl">
         <div class="py-6 px-6 2xl:pl-14">
             <img src={Merliin} alt="..." class="shadow rounded-full max-w-full h-28 align-middle border-none" />

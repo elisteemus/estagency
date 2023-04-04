@@ -4,6 +4,7 @@
     import Andres from '$lib/images/Andres.png';
     import Ott from '$lib/images/Ott.png';
     import terereelika from '$lib/images/terereelika.png';
+
 </script>
 
 <style>
